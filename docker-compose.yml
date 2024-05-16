@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  firebase:
+    image: google/cloud-sdk:476.0.0
+    command: gcloud emulators firestore start --host-port=0.0.0.0:8978
+    ports:
+      - "8978:8978"
+    
+  datastore:
+    image: google/cloud-sdk:476.0.0
+    command: gcloud emulators firestore start --database-mode=datastore-mode --host-port=0.0.0.0:8380
+    ports:
+      - "8380:8380"
