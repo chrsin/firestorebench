@@ -18,3 +18,4 @@ services:
       context: .
     environment:
       FIRESTORE_EMULATOR_HOST: statestorebenchmark-firebase-1:8978
+      PROJECT_ID: knp-ok-app-test

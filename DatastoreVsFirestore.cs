@@ -12,14 +12,17 @@ public class DatastoreVsFirestore
 
     public DatastoreVsFirestore()
     {
+        string? projectId = Environment.GetEnvironmentVariable("PROJECT_ID");
+        if (projectId is null)
+            throw new Exception("No PROJECT_ID env var supplied");
         EmulatorDetection emulatorDetection = EmulatorDetection.None;
         if (Environment.GetEnvironmentVariable("FIRESTORE_EMULATOR_HOST") is not null)
             emulatorDetection = EmulatorDetection.EmulatorOnly;
-
+        
         FirestoreDbBuilder firestoreDbBuilder = new FirestoreDbBuilder
         {
             EmulatorDetection = emulatorDetection,
-            ProjectId = "knp-ok-app-test"
+            ProjectId = projectId
         };
         _firestore = firestoreDbBuilder.Build();
     }
