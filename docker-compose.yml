@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
   firebase:
     image: google/cloud-sdk:476.0.0
@@ -11,3 +11,10 @@ services:
     command: gcloud emulators firestore start --database-mode=datastore-mode --host-port=0.0.0.0:8380
     ports:
       - "8380:8380"
+
+  benchmark:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      FIRESTORE_EMULATOR_HOST: statestorebenchmark-firebase-1:8978
